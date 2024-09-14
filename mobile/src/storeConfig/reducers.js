@@ -1,22 +1,31 @@
 import { combineReducers } from 'redux';
 
-const initialCounterState = {
-  count: 0,
+const initialCartState = {
+  items: [],
+  totalItems: 0,
 };
 
-const counterReducer = (state = initialCounterState, action) => {
+const cartReducer = (state = initialCartState, action) => {
   switch (action.type) {
-    case 'INCREMENT':
-      return { ...state, count: state.count + 1 };
-    case 'DECREMENT':
-      return { ...state, count: state.count - 1 };
+    case 'ADD_ITEM':
+      return {
+        ...state,
+        items: [...state.items, action.payload],
+        totalItems: state.totalItems + 1,
+      };
+    case 'REMOVE_ITEM':
+      return {
+        ...state,
+        items: state.items.filter(item => item.id !== action.payload.id),
+        totalItems: state.totalItems - 1,
+      };
     default:
       return state;
   }
 };
 
 const rootReducer = combineReducers({
-  counter: counterReducer,
+  cart: cartReducer,
 });
 
 export default rootReducer;
