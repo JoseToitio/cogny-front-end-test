@@ -1,6 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect  } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import {
   useFonts,
@@ -11,6 +10,8 @@ import {
 } from "@expo-google-fonts/roboto"
 import { ThemeProvider } from 'styled-components/native';
 import COLORS from "../src/styles/theme";
+import BuyItem from './screens/BuyItem/BuyItem';
+import { Header } from './components/Header/Header';
 
 SplashScreen.preventAutoHideAsync();
 export default function App() {
@@ -33,20 +34,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={COLORS}>
-      <View style={styles.container}>
         <StatusBar style='dark' translucent backgroundColor='transparent'/>
-        <Text>SplashScreen Demo! 👋</Text>
-        <StatusBar style="auto" />
-      </View>
+        <Header />
+        <BuyItem />
     </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    fontFamily: 'Roboto_300Light',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
