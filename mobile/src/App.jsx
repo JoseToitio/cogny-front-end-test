@@ -10,8 +10,10 @@ import {
 } from "@expo-google-fonts/roboto"
 import { ThemeProvider } from 'styled-components/native';
 import COLORS from "../src/styles/theme";
-import BuyItem from './screens/BuyItem/BuyItem';
 import { Header } from './components/Header/Header';
+import { Provider } from 'react-redux';
+import store from './storeConfig/store';
+import { BuyItem } from './screens/BuyItem/BuyItem';
 
 SplashScreen.preventAutoHideAsync();
 export default function App() {
@@ -31,12 +33,13 @@ export default function App() {
     return null;
   }
 
-
   return (
-    <ThemeProvider theme={COLORS}>
+    <Provider store={store}>
+      <ThemeProvider theme={COLORS}>
         <StatusBar style='dark' translucent backgroundColor='transparent'/>
         <Header />
         <BuyItem />
     </ThemeProvider>
+    </Provider>
   );
 }

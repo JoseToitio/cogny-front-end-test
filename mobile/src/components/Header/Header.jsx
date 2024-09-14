@@ -3,8 +3,11 @@ import { Container, ContainerTitle, OvalIcon, ShopCartContent, Title, OvalText }
 import SafeViewAndroid from "../SafeViewAndroid";
 import ShoesIcon from "../../assets/images/Shoes.svg";
 import PadlockIcon from "../../assets/images/PadlockIcon.svg";
+import { useSelector } from 'react-redux';
 
 export function Header() {
+  const count = useSelector((state) => state.counter.count);
+
   return (
     <SafeAreaView style={SafeViewAndroid.AndroidSafeArea}>
       <Container>
@@ -15,10 +18,11 @@ export function Header() {
         <ShopCartContent>
           <PadlockIcon />
           <OvalIcon>
-            <OvalText>5</OvalText>
+            <OvalText>{count}</OvalText>
           </OvalIcon>
         </ShopCartContent>
       </Container>
     </SafeAreaView>
   );
 }
+
