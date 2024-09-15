@@ -38,7 +38,7 @@ export default function App() {
       <ThemeProvider theme={COLORS}>
         <StatusBar style='dark' translucent backgroundColor='transparent'/>
         <Header />
-        <BuyItem />
+        {/* <BuyItem /> */}
     </ThemeProvider>
     </Provider>
   );

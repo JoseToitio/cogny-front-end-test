@@ -6,8 +6,7 @@ import PadlockIcon from "../../assets/images/PadlockIcon.svg";
 import { useSelector } from 'react-redux';
 
 export function Header() {
-  const count = useSelector((state) => state.counter.count);
-
+  const count = useSelector((state) => state.cart.totalItems);
   return (
     <SafeAreaView style={SafeViewAndroid.AndroidSafeArea}>
       <Container>
@@ -17,9 +16,11 @@ export function Header() {
         </ContainerTitle>
         <ShopCartContent>
           <PadlockIcon />
-          <OvalIcon>
+          {count > 0 && (
+            <OvalIcon>
             <OvalText>{count}</OvalText>
           </OvalIcon>
+          )}
         </ShopCartContent>
       </Container>
     </SafeAreaView>
