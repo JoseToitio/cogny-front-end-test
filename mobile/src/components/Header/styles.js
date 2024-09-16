@@ -44,7 +44,7 @@ export const OvalIcon = styled.View`
   width: 16px;
   flex-shrink: 0;
   height: 16px;
-  border-radius: 8px;
+  border-radius: 10px;
   background-color: ${({ theme }) => theme.COLORS.RED_BUTTON};
   color: ${({ theme }) => theme.COLORS.WHITE};
 `;
