@@ -44,7 +44,7 @@ export function BuyItem() {
     <Container>
       <ScrollView>
         {products.map(({ imageUrl, name, price, id }) => (
-          <Cart image={imageUrl} key={id} name={name} price={price} id={id} />
+          <Cart image={imageUrl} key={id} name={name} price={price} id={id} isCartSummary={false}/>
         ))}
       </ScrollView>
     </Container>

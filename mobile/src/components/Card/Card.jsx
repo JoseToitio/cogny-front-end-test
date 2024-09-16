@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   Container,
@@ -12,7 +12,8 @@ import {
   ButtonText,
   ButtonsContainer,
 } from "./styles";
-import { addProduct, updateQuantity } from "../../storeConfig/cartReducer";
+
+import { addProduct, updateQuantity,  } from "../../storeConfig/cartReducer";;
 
 export function Cart({ name, price, image, id }) {
   const [quantity, setQuantity] = useState(1);
@@ -56,4 +57,5 @@ export function Cart({ name, price, image, id }) {
       </ButtonsContainer>
     </Container>
   );
+
 }

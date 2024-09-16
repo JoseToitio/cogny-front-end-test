@@ -7,7 +7,9 @@ export default {
     BLACK: '#000000',
     ITEM_TITLE: '#333',
     GRAY: '#999',
-    BACKGROUND_HEADER: '#141419'
+    BACKGROUND_HEADER: '#141419',
+    CARD_SUMMARY: '#EEE',
+    BORDER_INPUT: '#DDD'
   },
 
   FONTS: {
