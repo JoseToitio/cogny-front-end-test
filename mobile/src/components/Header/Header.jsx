@@ -4,9 +4,10 @@ import SafeViewAndroid from "../SafeViewAndroid";
 import ShoesIcon from "../../assets/images/Shoes.svg";
 import PadlockIcon from "../../assets/images/PadlockIcon.svg";
 import { useSelector } from 'react-redux';
+import { selectTotalItems } from "../../storeConfig/cartReducer";
 
 export function Header() {
-  const count = useSelector((state) => state.cart.totalItems);
+  const count = useSelector(selectTotalItems);
   return (
     <SafeAreaView style={SafeViewAndroid.AndroidSafeArea}>
       <Container>

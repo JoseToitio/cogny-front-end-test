@@ -1,6 +1,7 @@
 export default {
   COLORS: {
     RED_BUTTON: '#F8375D',
+    OPACITY_BUTTON: '#c62c4a',
     BACKGROUND: '#191920',
     WHITE: '#FFF',
     BLACK: '#000000',
