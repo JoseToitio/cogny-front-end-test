@@ -15,7 +15,7 @@ const cartSlice = createSlice({
       if (existingProduct) {
         existingProduct.quantity += quantity;
       } else {
-        state.items.push(...state.items, { id, imageUrl, name, price, quantity });
+        state.items.push({ id, imageUrl, name, price, quantity });
       }
     },
     updateQuantity(state, action) {
