@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
-  padding: 17;
+
+  padding: 40px 0;
   flex-direction: row;
   justify-content: space-around;
 
