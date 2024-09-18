@@ -15,12 +15,14 @@ import {
   TotalText,
 } from "./styles";
 import { Link } from "react-router-dom";
+import { saveFinishedOrderFirestore } from "../../utils/fireStoreFunctions";
 
 export default function ShopCart() {
   const { cartItems, resetCart } = useProducts();
   const [totalPrice, setTotalPrice] = useState(0);
 
   const handleCloseOrder = () => {
+    saveFinishedOrderFirestore(cartItems)
     resetCart();
     alert("Pedido finalizado!");
   };

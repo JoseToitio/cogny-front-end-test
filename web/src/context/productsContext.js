@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { getProductsFromFirestore } from "../utils/fireStoreFunctions";
+import { getProductsFromFirestore, saveCartToFirestore } from "../utils/fireStoreFunctions";
 
 const ProductsContext = createContext();
 export const useProducts = () => useContext(ProductsContext);
@@ -51,6 +51,12 @@ export const ProductsProvider = ({ children }) => {
   const resetCart = () => {
     setCartItems([]);
   }
+
+  useEffect(() => {
+    if (cartItems.length > 0) {
+      saveCartToFirestore(cartItems);
+    }
+  }, [cartItems]);
 
   return (
     <ProductsContext.Provider
