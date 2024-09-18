@@ -1,6 +1,23 @@
-import { collection, doc, getDocs, setDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, getDocs, setDoc } from 'firebase/firestore';
 import { db } from "../services/firebase";
 import { v4 as uuidv4 } from 'uuid';
+import { products } from './productsData';
+
+export const addProductsToFirestore = async () => {
+  try {
+    const productsCollection = collection(db, 'products');
+    products.forEach(async (product) => {
+      await addDoc(productsCollection, {
+        id: product.id,
+        name: product.name,
+        imageUrl: product.imageUrl,
+        price: product.price,
+      });
+    });
+  } catch (e) {
+    console.error(e);
+  }
+};
 
 export const getProductsFromFirestore = async () => {
   try {
@@ -29,7 +46,7 @@ export const saveCartToFirestore = async (cartItems) => {
 export const saveFinishedOrderFirestore = async (cartItems) => {
   try {
     const orderId = uuidv4();
-    const newOrder = doc(db, 'orders', orderId); 
+    const newOrder = doc(db, 'orders', orderId);
     await setDoc(newOrder, { items: cartItems }, { merge: true });
     console.log('Pedido salvo com sucesso!');
   } catch (error) {

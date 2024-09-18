@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ButtonAdd } from "../../components/CardBuyItem/styles";
 
 export const Container = styled.div`
   display: flex;
@@ -20,3 +21,21 @@ export const CardWrapper = styled.div`
     grid-template-columns: 1fr;
   }
 `;
+
+export const ContainerError = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30vw;
+  gap: 30px;
+  p {
+    color: ${({ theme }) => theme.COLORS.WHITE};
+    font-size: 18px;
+    font-family: ${({ theme }) => theme.FONTS.ROBOTO_BOLD};
+  }
+`
+
+export const ButtonError = styled(ButtonAdd)`
+  width: 20%;
+  border-radius: 4px;
+`

@@ -49,6 +49,7 @@ export const ButtonAdd = styled.button`
   font-family: ${({ theme }) => theme.FONTS.ROBOTO_BOLD};
   font-size: 14px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
   &:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
