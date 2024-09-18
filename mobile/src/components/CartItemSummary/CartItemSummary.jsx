@@ -6,6 +6,7 @@ import { ButtonText } from "../Card/styles";
 import ItemSummary from "../ItemSummary/ItemSummary";
 import { Price } from "../ItemSummary/styles";
 import { ScrollView } from "react-native";
+import { saveFinishedOrderFirestore } from "../../utils/firestoreFunctions";
 
 export function CartItemSummary({ products }) {
   const total = useSelector(selectTotalPrice);
@@ -13,6 +14,7 @@ export function CartItemSummary({ products }) {
 
   function handleCheckout() {
     Alert.alert("Pedido finalizado!");
+    saveFinishedOrderFirestore(products);
     dispatch(resetCart());
   }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Container,
   Image,
@@ -13,10 +13,16 @@ import {
   ButtonsContainer,
 } from "./styles";
 
-import { addProduct, updateQuantity,  } from "../../storeConfig/cartReducer";;
+import {
+  addProduct,
+  selectCartItems,
+  updateQuantity,
+} from "../../storeConfig/cartReducer";
+import { saveCartToFirestore } from "../../utils/firestoreFunctions";
 
 export function Cart({ name, price, image, id }) {
   const [quantity, setQuantity] = useState(1);
+  const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
@@ -35,6 +41,10 @@ export function Cart({ name, price, image, id }) {
     setQuantity(newQuantity);
     dispatch(updateQuantity({ id, quantity: parseInt(newQuantity) }));
   };
+
+  useEffect(() => {
+    saveCartToFirestore(cartItems);
+  }, [cartItems]);
 
   return (
     <Container>
@@ -57,5 +67,4 @@ export function Cart({ name, price, image, id }) {
       </ButtonsContainer>
     </Container>
   );
-
 }
