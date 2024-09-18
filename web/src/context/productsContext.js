@@ -26,21 +26,36 @@ export const ProductsProvider = ({ children }) => {
 
   const addToCart = (product, quantity) => {
     setCartItems((prevItems) => {
-      const itemExists = prevItems.find((item) => item.product.id === product.id);
+      const itemExists = prevItems.find((item) => item.id === product.id);
+
       if (itemExists) {
         return prevItems.map((item) =>
-          item.product.id === product.id
+          item.id === product.id
             ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       } else {
-        return [...prevItems, { product, quantity }];
+        return [...prevItems, { ...product, quantity }];
       }
     });
   };
 
+  const updateQuantity = (id, quantity) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id? {...item, quantity } : item
+      )
+    );
+  }
+
+  const resetCart = () => {
+    setCartItems([]);
+  }
+
   return (
-    <ProductsContext.Provider value={{ products, loading, addToCart, cartItems }}>
+    <ProductsContext.Provider
+      value={{ products, loading, addToCart, cartItems, resetCart, updateQuantity }}
+    >
       {children}
     </ProductsContext.Provider>
   );

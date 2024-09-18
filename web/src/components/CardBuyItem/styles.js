@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 280px;
   background-color: ${({ theme }) => theme.COLORS.WHITE};
   border-color: ${({ theme }) => theme.COLORS.WHITE};
   border-width: 1px;
@@ -55,7 +54,7 @@ export const ButtonAdd = styled.button`
   }
 
   &:active {
-    transform: scale(1.01);
+    transform: scale(0.96);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 `;
@@ -79,4 +78,10 @@ export const QuantityInput = styled.input`
   background-color: ${({ theme }) => theme.COLORS.OPACITY_BUTTON};
   font-family: ${({ theme }) => theme.FONTS.ROBOTO};
   text-align: center;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;

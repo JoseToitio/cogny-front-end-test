@@ -8,13 +8,12 @@ import {
   ButtonAdd,
   QuantityInput,
   ContainerImage,
-  ButtonText,
   ButtonsContainer,
 } from "./styles";
 
 export default function CardBuyItem({ name, price, image, id }) {
   const [quantity, setQuantity] = useState(1);
-  const { addToCart, cartItems } = useProducts();
+  const { addToCart } = useProducts();
 
   const handleAddToCart = () => {
     const product = {
@@ -23,6 +22,7 @@ export default function CardBuyItem({ name, price, image, id }) {
       name: name,
       price: price,
     };
+
     addToCart(product, quantity);
   };
 
@@ -34,13 +34,13 @@ export default function CardBuyItem({ name, price, image, id }) {
   return (
     <Container>
       <ContainerImage>
-        <Image src={image} resizeMode="contain" />
+        <Image src={image} />
       </ContainerImage>
       <ProductName>{name}</ProductName>
       <ProductPrice>R$ {price?.toFixed(2).replace(".", ",") || 0}</ProductPrice>
       <ButtonsContainer>
         <QuantityInput
-          keyboardType="numeric"
+          type="number"
           value={quantity.toString()}
           onChange={handleQuantityChange}
         />

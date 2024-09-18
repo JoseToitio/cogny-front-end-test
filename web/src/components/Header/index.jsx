@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { ReactComponent as ShoesIcon } from "../../assets/images/Shoes.svg";
+import { useProducts } from "../../context/productsContext";
 import {
   Container,
   ContainerTitle,
@@ -7,10 +9,10 @@ import {
   Text,
   Title,
 } from "./styles";
-import { ReactComponent as ShoesIcon } from "../../assets/images/Shoes.svg";
 
 export default function Header() {
-  const count = 1;
+  const { cartItems } = useProducts();
+  const count = cartItems.length;
   return (
     <Container>
       <Link to="/">
@@ -22,7 +24,7 @@ export default function Header() {
       <Link to="/ShopCart">
         <ShopCartContent>
           <Text>Meu carrinho</Text>
-          <QuantityText>{count} itens</QuantityText>
+          <QuantityText>{count} {count === 1 ? "item" : "itens"}</QuantityText>
         </ShopCartContent>
       </Link>
     </Container>

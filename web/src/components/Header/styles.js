@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
-
+  justify-content: space-between;
   padding: 40px 0;
   flex-direction: row;
-  justify-content: space-around;
+  margin: 0 20% 0 20%;
 
   a {
     display: flex;
