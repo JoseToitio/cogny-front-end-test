@@ -41,6 +41,7 @@ export default function CardBuyItem({ name, price, image, id }) {
       <ButtonsContainer>
         <QuantityInput
           type="number"
+          min="1"
           value={quantity.toString()}
           onChange={handleQuantityChange}
         />
