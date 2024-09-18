@@ -1,11 +1,20 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getProductsFromFirestore } from '../utils/firestoreFunctions';
+import { addProductsToFirestore, getProductsFromFirestore } from '../utils/firestoreFunctions';
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async () => {
     const products = await getProductsFromFirestore();
     return products;
+  }
+);
+
+export const addProductsAndFetch = createAsyncThunk(
+  'products/addProductsAndFetch',
+  async () => {
+    await addProductsToFirestore();
+    const updatedProducts = await getProductsFromFirestore();
+    return updatedProducts;
   }
 );
 

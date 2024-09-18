@@ -1,20 +1,20 @@
-import { fetchProducts } from "../../storeConfig/productsReducer";
+import { addProductsAndFetch, fetchProducts } from "../../storeConfig/productsReducer";
 import React, { useEffect } from "react";
-import {
-  View,
-  Text,
-  Button,
-  ActivityIndicator,
-  ScrollView,
-} from "react-native";
+import { Text, ActivityIndicator, ScrollView } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Loading } from "./styles";
+import {
+  ButtonError,
+  ButtonTextError,
+  Container,
+  ContainerError,
+  Loading,
+  TextError,
+} from "./styles";
 import { Cart } from "../../components/Card/Card";
-import { products as productsData } from "../../utils/productsData";
 
 export function BuyItem() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.items) || productsData;
+  const products = useSelector((state) => state.products.items);
   const status = useSelector((state) => state.products.status);
   const error = useSelector((state) => state.products.error);
 
@@ -23,6 +23,11 @@ export function BuyItem() {
       dispatch(fetchProducts());
     }
   }, [dispatch, status]);
+
+  const handleAddProducts = () => {
+    dispatch(addProductsAndFetch());
+    dispatch(fetchProducts());
+  };
 
   if (status === "loading") {
     return (
@@ -40,11 +45,35 @@ export function BuyItem() {
     );
   }
 
+  if (products.length === 0) {
+    return (
+      <ContainerError>
+        <TextError>
+          Opa, parece que ainda não há produtos disponíveis no momento.
+          {"\n"}
+          Por favor, clique no botão abaixo para adicionar produtos ao seu banco
+          de dados.
+        </TextError>
+        <ButtonError onPress={handleAddProducts}>
+          <ButtonTextError>
+            Adicionar Produtos ao Banco de Dados
+          </ButtonTextError>
+        </ButtonError>
+      </ContainerError>
+    );
+  }
   return (
     <Container>
       <ScrollView>
         {products.map(({ imageUrl, name, price, id }) => (
-          <Cart image={imageUrl} key={id} name={name} price={price} id={id} isCartSummary={false}/>
+          <Cart
+            image={imageUrl}
+            key={id}
+            name={name}
+            price={price}
+            id={id}
+            isCartSummary={false}
+          />
         ))}
       </ScrollView>
     </Container>
