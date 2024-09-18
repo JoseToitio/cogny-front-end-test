@@ -1,48 +1,61 @@
-<h2 align="center">
-  Cogny Web/Mobile Teste
-</h2>
+# Cognyshoes 
 
-<p align="center">
-  <img alt="Frontend" src=".github/templates.png" width="100%">
-</p>
+## Tecnologias Utilizadas
 
-## Tecnologias
+- **React Native com Expo**
+- **Redux** com **Redux Toolkit** (mobile)
+- **Firebase Firestore**
+- **Styled-components** (mobile & web)
+- **React Router**
+- **ReactJS**
 
-- [React](https://reactjs.org)
-- [React Native](https://facebook.github.io/react-native/)
-- Firebase
+## Funcionalidades Desenvolvidas
 
-## Descrição
+1. **Listagem de produtos**:
+   - Os dados são consumidos do Firebase Firestore, onde foram cadastrados 10+ produtos com descrição, preço e imagem.
+   
+2. **Carrinho de compras**:
+   - O usuário pode adicionar produtos ao carrinho a partir da listagem.
+   - O mesmo produto não pode ser adicionado mais de uma vez.
+   - A quantidade de itens no carrinho pode ser ajustada.
+   
+3. **Finalização de pedido**:
+   - Após finalizar o pedido, o usuário recebe um alerta de confirmação.
+   - Os produtos do carrinho são removidos, liberando-o para novas compras.
 
-Cognyshoes é um e-commerce proposto pela Cogny para avaliar as habilidades de possíveis novos colaboradoes.
+## Desafio Implementado
 
-A proposta consiste em desenvolver uma simples aplicação, com versões web e mobile, para listagem de produtos e criação de pedidos, integrando com o Firebase.
+   - Foi implementado uma coleção adicional no Firestore que registra os pedidos do usuário.
+   - Foi criada uma coleção adicional no Firestore para **salvar os pedidos comprados separadamente**, utilizando UUIDs para identificar cada pedido de forma única.
+   - Essa abordagem permite manter um registro detalhado de cada compra, o que facilita a gestão de pedidos e o histórico de compras dos usuários.
 
-Deve-se criar um projeto no Firebase e integrá-lo aos projetos web e mobile disponibilizados nesse teste, fazendo com que compartilhem os mesmos dados para desenvolver os seguintes pontos:
+## Instalação e Execução
 
-1. No Firebase, use o Firestore Database para criar suas coleções. 
-2. Crie uma coleção para armazenar os produtos, cadastrando no mínimo 10 produtos, com Descrição, Preço e Imagem Url.
-3. Siga os estilos propostos nesse Template [Figma](https://www.figma.com/community/file/1210687833751035228) e desenvolva as duas telas em ambos os ambientes.
-4. A tela de listagem de produtos deve consumir os dados criados anteriomente no Firebase.
-5. A tela do carrinho deve conter os produtos selecionados pelo usuário na tela anterior, não deixando o usuário adicionar o mesmo produto mais de uma vez.
-6. Ao finalizar o pedido, deve-se apresentar um alerta para o usuário, informando que o pedido foi finalizado e remover os produtos selecionados, liberando o carrinho para novas compras.
+1. **Instale as dependências**:
+   - Para a versão **web**, rode:
 
-<b>Desafio: </b> Criar uma ou mais coleções no Firebase e armazenar os produtos selecionados pelo usuário presentes no carrinho. 
+     ```bash
+     npm install
+     ```
 
-## Entrega
+   - Para a versão **mobile**, use:
 
-A entrega do código deve ser realizada através do GitHub seguindo as seguintes instruções:
+     ```bash
+     yarn install
+     ```
 
-1. Faça fork do projeto.
-2. Crie uma branch para alterações na master.
-3. Faça o que é pedido no teste.
-4. Faça push dessa branch para seu projeto no GitHub
-5. Abra um Pull Request para o proprietário do projeto.
+2. **Configure suas credenciais do Firebase**:
+   - Crie um arquivo `.env` na raiz do projeto e adicione suas credenciais do Firebase.
 
-<i>Observação 01.: Não subir as credenciais do Firebase para o GitHub.</i>
-<br/>
-<i>Observação 02.: O candidato deve apresentar aos recrutadores o que foi desenvolvido.</i>
+3. **Para rodar o projeto**:
+   - Na versão **web**, execute:
 
-## Links úteis
+     ```bash
+     npm start
+     ```
 
-- [Guias Firebase](https://firebase.google.com/docs/guides?authuser=2&%3Bhl=pt&hl=pt#acesse-o-firebase-na-sua-plataforma)
+   - Na versão **mobile**:
+
+     ```bash
+     npx expo start
+     ```
