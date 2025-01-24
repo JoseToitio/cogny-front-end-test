@@ -1,4 +1,4 @@
-# Cognyshoes 
+# ShopSync 
 
 ## Tecnologias Utilizadas
 
